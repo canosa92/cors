@@ -11,17 +11,16 @@ function getCharacter() {
     .then(data => {
         let charName;
         container.innerHTML += `<h3>${data.length} characters found.</h3>`
-        data.map(dato => {
-            charName = dato.name
+        data.map(item => {
+            charName = item.name
             let imgUrl
-            const { status, species, gender, origin: {name}, image} = dato
+            const { status, species, gender, origin: {name}, image} = item
             let length = image.length
             if(image[length - 1] == '/') {
                 imgUrl = image.replace('/', '')
             } else {
                 imgUrl = image
             }
-            console.log(imgUrl)
             container.innerHTML += `
             <div class='card'>
                 <img src="${imgUrl}"/>
